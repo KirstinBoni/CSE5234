@@ -17,7 +17,7 @@
 <h3> Your Order is Confirmed! </h3><br />
 <h4>Please find the order Details below:</h4>
 <h5>
-Order Number: 8050 <br />
+Confirmation Number: <c:out value="${sessionScope.confirmation}"/> <br />
 Order Items:
     <%
     Order order = (Order) request.getSession().getAttribute("order");

@@ -3,6 +3,7 @@
 	<name>CATalogue</name>
 	<comment></comment>
 	<projects>
+		<project>CATalogue-InventoryManagement-EJBClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

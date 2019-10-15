@@ -1,6 +1,4 @@
 package edu.osu.cse5234.controller;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.osu.cse5234.model.Item;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.model.ShippingInfo;
+import edu.osu.cse5234.util.ServiceLocator;
 
 
 @Controller
@@ -22,14 +20,23 @@ public class PurchaseController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setAttribute("order", getInitialOrder());
+		Order order = new Order();
+		order.setItems(ServiceLocator.getInventoryService().getAvailableInventory().getItems());
+		request.setAttribute("order", order);
 		return "OrderEntryForm"; 
 	}
 	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		request.getSession().setAttribute("order", order);
-		return "redirect:/purchase/paymentEntry";
+		request.getSession().setAttribute("error", null);
+
+		if(ServiceLocator.getOrderProcessingService().validateItemAvailability(order)) {
+			request.getSession().setAttribute("order", order);
+			return "redirect:/purchase/paymentEntry";
+		} else {
+			request.getSession().setAttribute("error", "Please enter a valid amount");
+			return "redirect:/purchase";
+		}
 	}
 
 
@@ -61,45 +68,11 @@ public class PurchaseController {
 	public String viewOrderEntry(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		return "ViewOrder"; 
 	}
-	
-	private Order getInitialOrder(){
-		List<Item> items = new ArrayList<>();
-		Order order = new Order();
-		Item cat_1 = new Item();
-		cat_1.setName("Extra fluffy cat");
-		cat_1.setPrice("5.00");
-		
-		items.add(cat_1);
-
-		Item cat_2 = new Item();
-		cat_2.setName("Extra extra fluffy cat");
-		cat_2.setPrice("5.50");
-		items.add(cat_2);
-		
-		Item cat_3 = new Item();
-		cat_3.setName("Soft cat");
-		cat_3.setPrice("3.00");
-		order.setItems(items);
-		items.add(cat_3);
-		
-		Item cat_4 = new Item();
-		cat_4.setName("Super soft cat");
-		cat_4.setPrice("3.50");
-		order.setItems(items);
-		items.add(cat_4);
-
-		Item cat_5 = new Item();
-		cat_5.setName("Nice cat");
-		cat_5.setPrice("1.00");
-		items.add(cat_5);
-		
-		
-		order.setItems(items);
-		return order;
-	}
 
 	@RequestMapping(path = "confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Order order = (Order) request.getSession().getAttribute("order");
+		request.getSession().setAttribute("confirmation", ServiceLocator.getOrderProcessingService().processOrder(order));
 		return "redirect:/purchase/viewConfirmation";
 	}
 	

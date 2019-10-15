@@ -3,6 +3,9 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+        <dependent-module archiveName="CATalogue-InventoryManagement-EJBClient.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CATalogue-InventoryManagement-EJBClient/CATalogue-InventoryManagement-EJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/CATalogue/WebContent/WEB-INF/classes"/>
         <property name="context-root" value="CATalogue"/>
     </wb-module>
