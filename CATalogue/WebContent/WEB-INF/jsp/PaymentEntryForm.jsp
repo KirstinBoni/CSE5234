@@ -19,8 +19,8 @@
 <div class="col-xs-4">
 	    <table class="table table-striped table-bordered" style="font-size: 15px">
    			<tr>
-		  		<td><form:label path="cardHolder">Card Holder</form:label></td> 
-				<td><form:input path="cardHolder" /></td>
+		  		<td><form:label path="cardHolderName">Card Holder</form:label></td> 
+				<td><form:input path="cardHolderName" /></td>
 			</tr>
     		<tr> 
     			<td><form:label path="creditCardNumber">Credit Card Number</form:label></td>   	

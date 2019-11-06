@@ -1,5 +1,8 @@
 package edu.osu.cse5234.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.osu.cse5234.model.Item;
+import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.model.ShippingInfo;
@@ -21,7 +26,21 @@ public class PurchaseController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Order order = new Order();
-		order.setItems(ServiceLocator.getInventoryService().getAvailableInventory().getItems());
+		
+		
+		List<LineItem> i1 = new ArrayList<>();
+    	for(Item i : ServiceLocator.getInventoryService().getAvailableInventory().getItems()) {
+    		LineItem item = new LineItem();
+    		item.setQuantity(0);
+    		item.setId(i.getId()); 
+    		item.setItemNumber(i.getItemNumber());
+    		item.setItemName(i.getName());
+    		item.setPrice(i.getUnitPrice());
+			i1.add(item);
+    	}
+		
+		
+		order.setItems(i1);
 		request.setAttribute("order", order);
 		return "OrderEntryForm"; 
 	}
@@ -46,9 +65,16 @@ public class PurchaseController {
 		return "PaymentEntryForm";
 	}
 
+//	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
+//	public String submitPayment(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request, HttpServletResponse response) {
+//		request.getSession().setAttribute("shippingInfo", shippingInfo);
+//		return "redirect:/purchase/shippingEntry";
+//	}
 	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
-	public String submitPayment(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request, HttpServletResponse response) {
-		request.getSession().setAttribute("shippingInfo", shippingInfo);
+	public String submitPayment(@ModelAttribute("PaymentInfo") PaymentInfo PaymentInfo, HttpServletRequest request, HttpServletResponse response) {
+		Order ord = (Order)request.getSession().getAttribute("order");
+		ord.setPayment(PaymentInfo);
+		//request.getSession().setAttribute("shippingInfo", new ShippingInfo());
 		return "redirect:/purchase/shippingEntry";
 	}
 	
@@ -60,7 +86,9 @@ public class PurchaseController {
 	
 	@RequestMapping(path = "/submitShipping", method = RequestMethod.POST)
 	public String submitShipping(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.getSession().setAttribute("shippingInfo", shippingInfo);
+		//request.getSession().setAttribute("shippingInfo", shippingInfo);
+		Order ord = (Order)request.getSession().getAttribute("order");
+		ord.setShipping(shippingInfo);
 		return "redirect:/purchase/viewOrder";
 	}
 	
