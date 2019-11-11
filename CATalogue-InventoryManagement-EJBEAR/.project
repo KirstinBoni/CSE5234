@@ -5,6 +5,7 @@
 	<projects>
 		<project>CATalogue-InventoryManagement-EJB</project>
 		<project>CATalogue-InventoryManagement-EJBClient</project>
+		<project>ChaseBankApplication</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

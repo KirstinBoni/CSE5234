@@ -34,6 +34,8 @@ public class ShippingInfo {
 	@Column(name="POSTAL_CODE")
 	private String zip;
 	
+	@Column(name="UPS_SHIPPING_REF")
+	private String upsShippingRef;
 	
 	public int getId() {
 		return id;
@@ -77,5 +79,10 @@ public class ShippingInfo {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	
+	public String getUpsShippingRef() {
+		return upsShippingRef;
+	}
+	public void setUpsShippingRef(String upsShippingRef) {
+		this.upsShippingRef = upsShippingRef;
+	}	
 }

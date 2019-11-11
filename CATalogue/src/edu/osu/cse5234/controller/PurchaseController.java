@@ -65,16 +65,10 @@ public class PurchaseController {
 		return "PaymentEntryForm";
 	}
 
-//	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
-//	public String submitPayment(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request, HttpServletResponse response) {
-//		request.getSession().setAttribute("shippingInfo", shippingInfo);
-//		return "redirect:/purchase/shippingEntry";
-//	}
 	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
 	public String submitPayment(@ModelAttribute("PaymentInfo") PaymentInfo PaymentInfo, HttpServletRequest request, HttpServletResponse response) {
 		Order ord = (Order)request.getSession().getAttribute("order");
 		ord.setPayment(PaymentInfo);
-		//request.getSession().setAttribute("shippingInfo", new ShippingInfo());
 		return "redirect:/purchase/shippingEntry";
 	}
 	
@@ -86,7 +80,6 @@ public class PurchaseController {
 	
 	@RequestMapping(path = "/submitShipping", method = RequestMethod.POST)
 	public String submitShipping(@ModelAttribute("shippingInfo") ShippingInfo shippingInfo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//request.getSession().setAttribute("shippingInfo", shippingInfo);
 		Order ord = (Order)request.getSession().getAttribute("order");
 		ord.setShipping(shippingInfo);
 		return "redirect:/purchase/viewOrder";

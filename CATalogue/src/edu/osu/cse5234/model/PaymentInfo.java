@@ -26,6 +26,9 @@ public class PaymentInfo {
 	
 	@Column(name="HOLDER_NAME")
 	private String cardHolderName;
+
+	@Column(name="CONFIRMATION_NUMBER")
+	private String confirmationNumber;
 	
 	public int getId() {
 		return id;
@@ -56,5 +59,11 @@ public class PaymentInfo {
 	}
 	public void setCardHolderName(String cardHolderName) {
 		this.cardHolderName = cardHolderName;
+	}
+	public void setConfirmationNumber(String confirmationNumber) {
+		this.confirmationNumber = confirmationNumber;
+	}
+	public String getConfirmationNumber() {
+		return confirmationNumber;
 	}
 }
