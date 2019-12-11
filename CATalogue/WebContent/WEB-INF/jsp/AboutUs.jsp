@@ -29,11 +29,11 @@
 <div class="col-xs-3">
 <div class="jumbotron">
   	<div class="card">
-    <img class="card-img-top img-circle" src="https://media.licdn.com/dms/image/C5603AQHR19e8OCtjKA/profile-displayphoto-shrink_800_800/0?e=1576108800&v=beta&t=gjrhJO8ToAqv7e0g8oWP5gqIt7RbIbM8nmLoSevNiD0" alt="Card image" style="width:100%" />
+    <img class="card-img-top img-circle" src="https://avatars2.githubusercontent.com/u/16889832?s=460&v=4" alt="Card image" style="width:100%" />
     <div class="card-body">
-      <h4 class="card-title">Kirsten Boni</h4>
+      <h4 class="card-title">Kirstin Boni</h4>
       <h5 class="card-title">CEO</h5>
-      <p style="font-size: 17px;" class="card-text">After working in companies like Amazon and Google, Kirsten is leading our ever-expanding CATalogue family.</p>
+      <p style="font-size: 17px;" class="card-text">After owning three cats the past two years and being a lifelong cat lover, Kirstin is leading our expanding CATalogue family.</p>
       <a href="https://www.linkedin.com/in/kirstinboni/" class="btn btn-primary">See Profile</a>
     </div>
   </div>
@@ -63,7 +63,7 @@
     <div class="card-body">
       <h4 class="card-title">Akhilesh Gulati</h4>
       <h5 class="card-title">Developer</h5>
-      <p style="font-size: 17px;" class="card-text">After working in companies like LinkedIn, Akhilesh is CATalogue's one of the most talented and experienced developers.</p>
+      <p style="font-size: 17px;" class="card-text">After working in companies like LinkedIn, Akhilesh is CATalogue's one of the most talented developers.</p>
       <a href="https://www.linkedin.com/in/akgulati/" class="btn btn-primary">See Profile</a>
     </div>
   </div>

@@ -8,9 +8,5 @@
         <dependent-module archiveName="CATalogue-InventoryManagement-EJBClient.jar" deploy-path="/lib" handle="module:/resource/CATalogue-InventoryManagement-EJBClient/CATalogue-InventoryManagement-EJBClient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ChaseBankApplication.war" deploy-path="/" handle="module:/resource/ChaseBankApplication/ChaseBankApplication">
-            <dependent-object>Module_1573017889119</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

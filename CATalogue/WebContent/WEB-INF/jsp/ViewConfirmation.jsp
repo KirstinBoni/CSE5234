@@ -13,22 +13,31 @@
 <meta charset="ISO-8859-1">
 <title>CATalogue</title>
 </head>
-<body>
+<body background="https://previews.123rf.com/images/sudowoodo/sudowoodo1611/sudowoodo161100018/67676119-different-cartoon-cats-set-simple-modern-geometric-flat-style-vector-illustration-.jpg">
 <jsp:include page="Header.jsp"/>
-<div class="container">
+<div class="container" style="background:white">
 <h3> Your Order is Confirmed! </h3><br />
-<h4>Please find the order Details below:</h4>
-<h5>
+<h3>Please find the order Details below:</h3>
+<h3>
 Confirmation Number: <c:out value="${sessionScope.confirmation}"/> <br />
-Order Items:
+</h3>
+<table class="table table-striped table-bordered table-hover" style="font-size: 17px">
+<th>Item</th>
+<th>Quantity</th>
     <%
     Order order = (Order) request.getSession().getAttribute("order");
     for(LineItem item : order.getItems()) {
+    	out.println("<tr>");
+    	out.println("<td>");
     	out.println(item.getItemName() + "\n");
+    	out.println("</td>");
+    	out.println("<td>");
     	out.println(item.getQuantity() + "\n");
+    	out.println("</td>");
+    	out.println("</tr>");
     }
     %>   
-</h5> 
+</table>
 <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 <div style="font-size: 18px; color: #fc6f03;">Congrats! A Lovely Cat is on it's way!</div>
 </div>

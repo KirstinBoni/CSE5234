@@ -22,15 +22,15 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img style="bottom: 6px; width:100%; height: 698px; overflow: hidden" src="http://www.allwhitebackground.com/images/2/2583.jpg" alt="Los Angeles">
+      <img style="  margin-left: auto; margin-right: auto;bottom: 6px; width:100%; height: 698px; width: 700px; overflow: hidden" src="https://images-na.ssl-images-amazon.com/images/I/91gpB2zyuNL._SL1500_.jpg" alt="Los Angeles">
     </div>
 
     <div class="item">
-      <img style="bottom: 6px; width:100%; height: 698px;" src="https://data.whicdn.com/images/12364703/original.jpg" alt="Chicago">
+      <img style="bottom: 6px; width:100%; height: 698px;" src="https://shop.r10s.jp/karabanashop/cabinet/neko01/imgrc0084742919.jpg" alt="Chicago">
     </div>
 
     <div class="item">
-      <img style="bottom: 6px; width:100%; height: 698px;" src="http://www.photobackgroundhd.com/wp-content/uploads/2018/07/Baby-cats-hd-backgrounds.jpg" alt="New York">
+      <img style="margin-left: auto; margin-right: auto;bottom: 6px; width:100%; height: 698px; width: 700px; overflow: hidden;" src="https://images-na.ssl-images-amazon.com/images/I/61t-C6K9FsL._SL1000_.jpg" alt="New York">
     </div>
   </div>
 
